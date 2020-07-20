@@ -21,7 +21,7 @@
     GUID              = 'e018492a-b133-4fea-a778-81cca9ce1f77'
 
     # Author of this module
-    Author            = 'Juan.Sifuentes'
+    Author            = 'Juan Sifuentes'
 
     # Company or vendor of this module
     CompanyName       = 'PeruITLab'
@@ -30,7 +30,7 @@
     Copyright         = '(c) 2020 Juan.Sifuentes. All rights reserved.'
 
     # Description of the functionality provided by this module
-    # Description = ''
+    Description       = 'Set of Office 365 tools for Intune'
 
     # Minimum version of the Windows PowerShell engine required by this module
     # PowerShellVersion = ''
@@ -101,13 +101,13 @@
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            # Tags = @()
+            Tags       = @('Office365')
 
             # A URL to the license for this module.
             # LicenseUri = ''
 
             # A URL to the main website for this project.
-            # ProjectUri = ''
+            ProjectUri = 'https://github.com/Neckross/Neckross365'
 
             # A URL to an icon representing this module.
             # IconUri = ''
