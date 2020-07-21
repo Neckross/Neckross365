@@ -11,7 +11,7 @@ function Get-Windows10HashBULKUploadToAzure {
   MUST need a dekstop management system to push the script (ex. KACE, SCCM, etc..)
 
 
-  .REQUIREMENTS (for BULK approach using a BATCH FILE)
+  [REQUIREMENTS] for BULK approach using a BATCH FILE
   Download the CMD file (Get-Windows10HashBULKUploadToAzure_batchfile.cmd)
   Define the values inside the batch file before running this script:
   BlobContainerUrl = Storage Account Blob URL

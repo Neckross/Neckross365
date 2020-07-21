@@ -6,7 +6,7 @@ function Get-Windows10HashBULKDownloadFromAzureUploadToIntune {
   .DESCRIPTION
   Download CSVs from Azure Blob and Combine them into single CSV and Upload to Intune (BULK approach)
 
-  .REQUIREMENTS
+  [REQUIREMENTS]
   BlobConnectionString = Storage Account Connection String
   BlobContainerHashes = Blob Container name for the Windows 10 Hashes
 
