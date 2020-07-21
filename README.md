@@ -1,9 +1,11 @@
-
 # Neckross365
-SHOUT OUT to Kevin Blumenfeld https://github.com/kevinblumenfeld. None of this would it have been possible without him... the guy its an open-book.
-
-
 Module was created for Intune PC and Windows 10 management (its a work-in-progress).
+
+
+BIG SHOUT OUT to Kevin Blumenfeld https://github.com/kevinblumenfeld .None of this would it have been possible without him.
+
+
+Thank you https://gist.github.com/okieselbach (I used some of your code for Autopilot)
 
 ## Prerequisite when TLS1.2 is not enforced
 If you receive an error attempting to installing the module. Run this and try again.
