@@ -25,7 +25,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 Install-Module Neckross365 -Force -Scope CurrentUser
 ```
 
-### Windows 10 Hashes
+### Windows 10 Autopilot Hashes
 * **Get-Windows10Hash** Collects Windows 10 hashes and export to CSV.
 * **Get-Windows10HashUploadToIntune** Collects Windows 10 hashes and uploads to Intune.
 * **Get-Windows10HashUploadToAzure** Collects Windows 10 hashes and uploads to Azure Blob (needs additional Blob configuration)
