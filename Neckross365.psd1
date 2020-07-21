@@ -12,7 +12,7 @@
     RootModule        = '.\Neckross365.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.0.002'
+    ModuleVersion     = '0.0.003'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -30,7 +30,7 @@
     Copyright         = '(c) 2020 Juan.Sifuentes. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description       = 'Set of Office 365 tools for Intune'
+    Description       = 'Set of Office 365 tools for Intune and Windows Autopilot'
 
     # Minimum version of the Windows PowerShell engine required by this module
     # PowerShellVersion = ''
