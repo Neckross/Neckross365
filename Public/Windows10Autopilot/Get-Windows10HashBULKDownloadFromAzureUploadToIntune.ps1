@@ -1,21 +1,23 @@
-function Get-Windows10HashDownloadFromAzureUploadToIntune {
+function Get-Windows10HashBULKDownloadFromAzureUploadToIntune {
   <#
   .SYNOPSIS
-  Download CSVs from Azure Blob and Combine them into single CSV and Upload to Intune
+  Download CSVs from Azure Blob and Combine them into single CSV and Upload to Intune (BULK approach)
 
   .DESCRIPTION
-  Download CSVs from Azure Blob and Combine them into single CSV and Upload to Intune
+  Download CSVs from Azure Blob and Combine them into single CSV and Upload to Intune (BULK approach)
+
+  .REQUIREMENTS
   BlobConnectionString = Storage Account Connection String
   BlobContainerHashes = Blob Container name for the Windows 10 Hashes
 
   .EXAMPLE
   Example1:
-  Get-Windows10HashDownloadFromAzureUploadToIntune -BlobConnectionString "oMYJLjKhlmMyyMxM1I5/IcnEtiMO/fey1A==" -BlobContainerHashes "windows10hashes"
+  Get-Windows10HashBULKDownloadFromAzureUploadToIntune -BlobConnectionString "oMYJLjKhlmMyyMxM1I5/IcnEtiMO/fey1A==" -BlobContainerHashes "windows10hashes"
 
   Example2:
   DOT SOURCE it
-  . .\Get-Windows10HashDownloadFromAzureUploadToIntune.ps1
-  Get-Windows10HashDownloadFromAzureUploadToIntune -BlobConnectionString "oMYJLjKhlmMyyMxM1I5/IcnEtiMO/fey1A==" -BlobContainerHashes "windows10hashes"
+  . .\Get-Windows10HashBULKDownloadFromAzureUploadToIntune.ps1
+  Get-Windows10HashBULKDownloadFromAzureUploadToIntune -BlobConnectionString "oMYJLjKhlmMyyMxM1I5/IcnEtiMO/fey1A==" -BlobContainerHashes "windows10hashes"
 
   .NOTES
   General notes

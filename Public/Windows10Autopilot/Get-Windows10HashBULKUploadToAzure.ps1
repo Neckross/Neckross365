@@ -1,4 +1,4 @@
-function Get-Windows10HashUploadToAzure {
+function Get-Windows10HashBULKUploadToAzure {
 
   <#
   .SYNOPSIS
@@ -7,11 +7,12 @@ function Get-Windows10HashUploadToAzure {
   .DESCRIPTION
   Capture Windows 10 Hashes and upload to Azure Blob automatically (BULK approach)
   It's meant to be used for BULK on multiple Windows 10 devices
+  Additional configuration is required for Azure Blob (MUST be completed first)
   MUST need a dekstop management system to push the script (ex. KACE, SCCM, etc..)
 
+
   .REQUIREMENTS
-  Additional configuration is required for Azure Blob (must be completed first)
-  Download the CMD file (Get-Windows10HashUploadToAzure_batchfile.cmd)
+  Download the CMD file (Get-Windows10HashBULKUploadToAzure_batchfile.cmd)
   Define the values inside the batch file before running this script:
   BlobContainerUrl = Storage Account Blob URL
   BlobContainerResources = Blob Container name for the resources
@@ -19,23 +20,23 @@ function Get-Windows10HashUploadToAzure {
   BlobKey = Blob Storage Account Key
 
   Example:
-  powershell.exe -ExecutionPolicy Bypass -Command ". C:\Scripts\Get-Windows10HashUploadToAzure.ps1 ; Get-Windows10HashUploadToAzure -BlobContainerUrl 'https://autopilothashes.blob.core.windows.net' -BlobContainerResources 'resources' -BlobContainerHashes 'windows10hashes' -BlobKey 'KtpGF+Nk4dRMCxQS3G1vwG0lDqUfJfxC9kUlfzML74WUQ=='"
+  powershell.exe -ExecutionPolicy Bypass -Command ". C:\Scripts\Get-Windows10HashBULKUploadToAzure.ps1 ; Get-Windows10HashBULKUploadToAzure -BlobContainerUrl 'https://autopilothashes.blob.core.windows.net' -BlobContainerResources 'resources' -BlobContainerHashes 'windows10hashes' -BlobKey 'KtpGF+Nk4dRMCxQS3G1vwG0lDqUfJfxC9kUlfzML74WUQ=='"
 
 
   .RECOMMENDED
-  Encapsulate the script to run as an Scheduled Task
+  Encapsulate the batch file to run as an Scheduled Task
   $User = "NT AUTHORITY\SYSTEM"
   $Trigger = New-ScheduledTaskTrigger -At 12:00PM –Daily
-  $Action = New-ScheduledTaskAction -Execute 'C:\Scripts\Get-Windows10HashUploadToAzure_batchfile.cmd'
-  Register-ScheduledTask -TaskName "COREBTS_Collect_Upload_AzureBlob" -Trigger $Trigger -User $User -Action $Action -RunLevel Highest –Force
+  $Action = New-ScheduledTaskAction -Execute 'C:\Scripts\Get-Windows10HashBULKUploadToAzure_batchfile.cmd'
+  Register-ScheduledTask -TaskName "Collect_Upload_AzureBlob" -Trigger $Trigger -User $User -Action $Action -RunLevel Highest –Force
 
   .EXAMPLE
   As PowerShell
-  Get-Windows10HashUploadToAzure -BlobContainerUrl "https://autopilothashes.blob.core.windows.net" -BlobContainerResources resources -BlobContainerHashes windows10hashes -BlobKey "KtpGF+Nk4dRMCxQS3G1vwG0lDqUfJfxC9kUlfzML74WUQ=="
+  Get-Windows10HashBULKUploadToAzure -BlobContainerUrl "https://autopilothashes.blob.core.windows.net" -BlobContainerResources resources -BlobContainerHashes windows10hashes -BlobKey "KtpGF+Nk4dRMCxQS3G1vwG0lDqUfJfxC9kUlfzML74WUQ=="
 
   .EXAMPLE
   As CMD
-  powershell.exe -ExecutionPolicy Bypass -Command ". C:\Scripts\Get-Windows10HashUploadToAzure.ps1 ; Get-Windows10HashUploadToAzure -BlobContainerUrl 'https://autopilothashes.blob.core.windows.net' -BlobContainerResources 'resources' -BlobContainerHashes 'windows10hashes' -BlobKey 'KtpGF+Nk4dRMCxQS3G1vwG0lDqUfJfxC9kUlfzML74WUQ=='"
+  powershell.exe -ExecutionPolicy Bypass -Command ". C:\Scripts\Get-Windows10HashBULKUploadToAzure.ps1 ; Get-Windows10HashBULKUploadToAzure -BlobContainerUrl 'https://autopilothashes.blob.core.windows.net' -BlobContainerResources 'resources' -BlobContainerHashes 'windows10hashes' -BlobKey 'KtpGF+Nk4dRMCxQS3G1vwG0lDqUfJfxC9kUlfzML74WUQ=='"
 
   .NOTES
   General notes
