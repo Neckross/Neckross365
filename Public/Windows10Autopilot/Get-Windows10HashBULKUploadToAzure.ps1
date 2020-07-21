@@ -1,5 +1,4 @@
 function Get-Windows10HashBULKUploadToAzure {
-
   <#
   .SYNOPSIS
   Capture Windows 10 Hashes and upload to Azure Blob automatically (BULK approach)
