@@ -1,8 +1,12 @@
+
 # Neckross365
-SHOUT OUT to KevinBluemenfeld!!! <<<<https://github.com/kevinblumenfeld>>>>
+SHOUT OUT to Kevin Blumenfeld https://github.com/kevinblumenfeld.
+
 None of this would it have been possible without him... the guy its an open-book.
 
+
 Module was created for Intune PC and Windows 10 management (its a work-in-progress).
+
 All feedback is welcome.
 
 ## Prerequisite when TLS1.2 is not enforced
