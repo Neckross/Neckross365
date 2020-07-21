@@ -6,12 +6,12 @@ function Get-Windows10HashBULKUploadToAzure {
 
   .DESCRIPTION
   Capture Windows 10 Hashes and upload to Azure Blob automatically (BULK approach)
-  It's meant to be used for BULK on multiple Windows 10 devices
+  It's meant to be used for multiple Windows 10 devices
   Additional configuration is required for Azure Blob (MUST be completed first)
   MUST need a dekstop management system to push the script (ex. KACE, SCCM, etc..)
 
 
-  .REQUIREMENTS
+  .REQUIREMENTS (for BULK approach using a BATCH FILE)
   Download the CMD file (Get-Windows10HashBULKUploadToAzure_batchfile.cmd)
   Define the values inside the batch file before running this script:
   BlobContainerUrl = Storage Account Blob URL
@@ -22,9 +22,7 @@ function Get-Windows10HashBULKUploadToAzure {
   Example:
   powershell.exe -ExecutionPolicy Bypass -Command ". C:\Scripts\Get-Windows10HashBULKUploadToAzure.ps1 ; Get-Windows10HashBULKUploadToAzure -BlobContainerUrl 'https://autopilothashes.blob.core.windows.net' -BlobContainerResources 'resources' -BlobContainerHashes 'windows10hashes' -BlobKey 'KtpGF+Nk4dRMCxQS3G1vwG0lDqUfJfxC9kUlfzML74WUQ=='"
 
-
-  .RECOMMENDED
-  Encapsulate the batch file to run as an Scheduled Task
+  [Encapsulate the batch file to run as an Scheduled Task]
   $User = "NT AUTHORITY\SYSTEM"
   $Trigger = New-ScheduledTaskTrigger -At 12:00PM –Daily
   $Action = New-ScheduledTaskAction -Execute 'C:\Scripts\Get-Windows10HashBULKUploadToAzure_batchfile.cmd'
