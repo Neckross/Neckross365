@@ -52,7 +52,7 @@ function Get-Windows10HashBULKDownloadFromAzureUploadToIntune {
 
   # Connect to Azure/MSGraph
   $azure = Connect-AzureRmAccount
-  Write-Host -ForegroundColor Blue "Connected to Azure tenant $($azure.Context.Tenant.Directory)"
+  Write-Host -ForegroundColor Yellow "Connected to Azure tenant $($azure.Context.Tenant.Directory)"
   $graph = Connect-MSGraph
   Write-Host -ForegroundColor Yellow "Connected to MSGraph tenant $($graph.TenantId)"
 
