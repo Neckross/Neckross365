@@ -23,9 +23,9 @@ function Get-Windows10HashBULKUploadToAzure {
 
   [Encapsulate the batch file to run as an Scheduled Task]
   $User = "NT AUTHORITY\SYSTEM"
-  $Trigger = New-ScheduledTaskTrigger -At 12:00PM –Daily
+  $Trigger = New-ScheduledTaskTrigger -At 12:00PM -Daily
   $Action = New-ScheduledTaskAction -Execute 'C:\Scripts\Get-Windows10HashBULKUploadToAzure_batchfile.cmd'
-  Register-ScheduledTask -TaskName "Collect_Upload_AzureBlob" -Trigger $Trigger -User $User -Action $Action -RunLevel Highest –Force
+  Register-ScheduledTask -TaskName "Collect_Upload_AzureBlob" -Trigger $Trigger -User $User -Action $Action -RunLevel Highest -Force
 
   .EXAMPLE
   As PowerShell
