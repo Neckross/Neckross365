@@ -5,6 +5,8 @@ function Get-Windows10HashBULKDownloadFromAzureUploadToIntune {
 
   .DESCRIPTION
   Download CSVs from Azure Blob and Combine them into single CSV and Upload to Intune (BULK approach)
+  It's meant to be used for multiple Windows 10 devices
+  Additional configuration is required for Azure Blob (MUST be completed first)
 
   [REQUIREMENTS]
   BlobConnectionString = Storage Account Connection String
@@ -12,11 +14,6 @@ function Get-Windows10HashBULKDownloadFromAzureUploadToIntune {
 
   .EXAMPLE
   Example1:
-  Get-Windows10HashBULKDownloadFromAzureUploadToIntune -BlobConnectionString "oMYJLjKhlmMyyMxM1I5/IcnEtiMO/fey1A==" -BlobContainerHashes "windows10hashes"
-
-  Example2:
-  DOT SOURCE it
-  . .\Get-Windows10HashBULKDownloadFromAzureUploadToIntune.ps1
   Get-Windows10HashBULKDownloadFromAzureUploadToIntune -BlobConnectionString "oMYJLjKhlmMyyMxM1I5/IcnEtiMO/fey1A==" -BlobContainerHashes "windows10hashes"
 
   .NOTES
@@ -80,5 +77,4 @@ function Get-Windows10HashBULKDownloadFromAzureUploadToIntune {
 
   # Upload Hashes to Intune
   Import-AutopilotCSV -csvFile $outputCombined
-
 }
