@@ -55,6 +55,8 @@ function Get-Windows10HashBULKUploadToAzure {
   $outputPath = Join-Path $env:windir "temp\Autopilot"
   $azCopyExe = Join-Path $outputPath "AzCopy\AzCopy.exe"
   $outputFile = Join-Path $outputPath $fileName
+  #$scriptPath = [System.IO.Path]::GetDirectoryName($MyInvocation.MyCommand.Path)
+  #$autoPilotScript = Join-Path $scriptPath "Get-WindowsAutoPilotInfo.ps1"
   $autoPilotScript = Join-Path $PSScriptRoot "Get-WindowsAutoPilotInfo.ps1"
 
   # Creating directory
@@ -73,9 +75,11 @@ function Get-Windows10HashBULKUploadToAzure {
   }
 
   # Collecting the Computer Hashes
+  $autoPilotScript = Join-Path $outputPath "Get-WindowsAutoPilotInfo.ps1"
   Start-Command -Command "powershell.exe" -Arguments "-ExecutionPolicy Bypass -File `"$autoPilotScript`" -ComputerName $env:computername -OutputFile `"$outputFile`"" | Out-Null
 
   # Uploading the Computer Hashes to Azure Blob
+  $azCopyExe = Join-Path $outputPath "AzCopy\AzCopy.exe"
   $url = "$BlobContainerUrl/$BlobContainerHashes"
   Start-Command -Command "`"$azCopyExe`"" -Arguments "/Source:`"$outputPath`" /Dest:$url /Pattern:$fileName /Y /Z:`"$(Join-Path $outputPath "AzCopy")`" /DestKey:`"$blobKey`"" | Out-Null
 
