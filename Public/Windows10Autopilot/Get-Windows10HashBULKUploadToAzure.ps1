@@ -52,7 +52,7 @@ function Get-Windows10HashBULKUploadToAzure {
 
   # Defining
   $fileName = "$env:computername" + "_" + "$env:username" + "_" + ".csv"
-  $outputPath = Join-Path $env:windir "temp\AutoPilotScript"
+  $outputPath = Join-Path $env:windir "temp\Autopilot"
   $azCopyExe = Join-Path $outputPath "AzCopy\AzCopy.exe"
   $outputFile = Join-Path $outputPath $fileName
   $autoPilotScript = Join-Path $PSScriptRoot "Get-WindowsAutoPilotInfo.ps1"

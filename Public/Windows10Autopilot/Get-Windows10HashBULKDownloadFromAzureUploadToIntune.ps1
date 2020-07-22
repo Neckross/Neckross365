@@ -32,7 +32,7 @@ function Get-Windows10HashBULKDownloadFromAzureUploadToIntune {
   )
 
   # Logs
-  $outputPath = Join-Path $env:windir "temp\AutoPilotScript"
+  $outputPath = Join-Path $env:windir "temp\Autopilot"
   $outputCombined = "$outputPath\AutopilotHashes.csv"
   if (-not (Test-Path $outputPath)) {
     New-Item -Path $outputPath -ItemType Directory | Out-Null
