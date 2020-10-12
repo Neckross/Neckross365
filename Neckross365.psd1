@@ -9,28 +9,28 @@
 @{
 
     # Script module or binary module file associated with this manifest.
-    RootModule        = '.\Neckross365.psm1'
+    RootModule = '.\Neckross365.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.0.009'
+    ModuleVersion = '0.0.009'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
 
     # ID used to uniquely identify this module
-    GUID              = 'e018492a-b133-4fea-a778-81cca9ce1f77'
+    GUID = 'e018492a-b133-4fea-a778-81cca9ce1f77'
 
     # Author of this module
-    Author            = 'Juan Sifuentes'
+    Author = 'Juan Sifuentes'
 
     # Company or vendor of this module
-    CompanyName       = 'PeruITLab'
+    CompanyName = 'PeruITLab'
 
     # Copyright statement for this module
-    Copyright         = '(c) 2020 Juan Sifuentes. All rights reserved.'
+    Copyright = '(c) 2020 Juan Sifuentes. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description       = 'Set of Office 365 tools for Intune and Windows Autopilot'
+    Description = 'Set of Office 365 tools for Intune and Windows Autopilot'
 
     # Minimum version of the Windows PowerShell engine required by this module
     # PowerShellVersion = ''
@@ -70,14 +70,14 @@
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport =
-    'Get-Windows10Hash',
-    'Get-Windows10HashBULKDownloadFromAzureUploadToIntune',
-    'Get-Windows10HashBULKUploadToAzure',
-    'Get-Windows10HashUploadToIntune',
-    'Get-MobileDevicesReport',
-    'Get-MfaUserReport',
-    'Set-MfaState',
-    'Set-MailboxMoveTimeZoneAndLanguage',
+    'Get-Windows10Hash'
+    'Get-Windows10HashBULKDownloadFromAzureUploadToIntune'
+    'Get-Windows10HashBULKUploadToAzure'
+    'Get-Windows10HashUploadToIntune'
+    'Get-MobileDevicesReport'
+    'Get-MfaUserReport'
+    'Set-MfaState'
+    'Set-MailboxMoveTimeZoneAndLanguage'
     'Get-MailboxMoveInfo'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -99,12 +99,12 @@
     # FileList = @()
 
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
-    PrivateData       = @{
+    PrivateData = @{
 
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags       = @('Office365')
+            Tags = @('Office365')
 
             # A URL to the license for this module.
             # LicenseUri = ''
