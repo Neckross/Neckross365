@@ -12,7 +12,7 @@
     RootModule        = '.\Neckross365.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.0.009'
+    ModuleVersion     = '0.0.008'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -69,16 +69,14 @@
     # NestedModules = @()
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport =
-    'Get-Windows10Hash',
+    FunctionsToExport = 'Get-Windows10Hash',
     'Get-Windows10HashBULKDownloadFromAzureUploadToIntune',
     'Get-Windows10HashBULKUploadToAzure',
     'Get-Windows10HashUploadToIntune',
-    'Get-MobileDevicesReport',
-    'Get-MfaUserReport',
     'Set-MfaState',
     'Set-MailboxMoveTimeZoneAndLanguage',
-    'Get-MailboxMoveInfo'
+    'Get-MailboxMoveInfo',
+    'Get-MobileDevicesReport'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     #CmdletsToExport   = @()
