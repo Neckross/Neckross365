@@ -21,7 +21,7 @@ function Set-MailboxMoveTimeZoneAndLanguage {
 
   param (
     [Parameter()]
-    $TimeZone = "Eastern Standard Time",
+    $TimeZone,
 
     [Parameter()]
     $Language = "en-US"

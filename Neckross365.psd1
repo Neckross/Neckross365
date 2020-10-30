@@ -12,7 +12,7 @@
     RootModule        = '.\Neckross365.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.0.0010'
+    ModuleVersion     = '0.0.0011'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -79,6 +79,7 @@
         'Set-MfaState'
         'Set-MailboxMoveTimeZoneAndLanguage'
         'Get-MailboxMoveInfo'
+        'Get-NewBatches'
     )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
