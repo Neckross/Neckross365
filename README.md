@@ -1,5 +1,5 @@
 # Neckross365
-Module was created for Intune PC management and Windows 10 Autopilot (its a work-in-progress).
+Module was created for Intune Windows 10 Autopilot and Office 365 management (its a work-in-progress).
 
 
 Huge SHOUT OUT to **Kevin Blumenfeld** https://github.com/kevinblumenfeld.
