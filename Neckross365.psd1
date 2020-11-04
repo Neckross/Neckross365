@@ -12,7 +12,7 @@
     RootModule        = '.\Neckross365.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.0.0011'
+    ModuleVersion     = '0.0.0012'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -30,7 +30,7 @@
     Copyright         = '(c) 2020 Juan Sifuentes. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description       = 'Set of Office 365 tools for Intune and Windows Autopilot'
+    Description       = 'Set of Office 365 tools for Intune Windows Autopilot and Office365'
 
     # Minimum version of the Windows PowerShell engine required by this module
     # PowerShellVersion = ''
@@ -77,9 +77,10 @@
         'Get-MobileDevicesReport'
         'Get-MfaUserReport'
         'Set-MfaState'
-        'Set-MailboxMoveTimeZoneAndLanguage'
         'Get-MailboxMoveInfo'
         'Get-NewBatches'
+        'Get-MailboxBrokenEAP'
+        'Set-MailboxBrokenEAP'
     )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.

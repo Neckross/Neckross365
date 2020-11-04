@@ -8,14 +8,10 @@ None of this would it have been possible without him.
 
 Thank you https://gist.github.com/okieselbach (I used some of your code for Autopilot)
 
-## Prerequisite when TLS1.2 is not enforced
-If you receive an error attempting to installing the module. Run this and try again.
-```
-[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
-```
 
 ## How to install
 ```
+[Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 Install-Module Neckross365 -Force
 ```
 
@@ -33,3 +29,6 @@ Install-Module Neckross365 -Force -Scope CurrentUser
 * **Get-MobileDevicesReport** Generates mobile devices report for Exchange Online.
 * **Get-MfaUserReport** Generates MSOL users MFA report.
 * **Set-MfaState** Converts an MFA user to user Azure AD Conditional Access MFA.
+* **Get-NewBatches** It collects a NewBatches csv file to update existing Batches excel sheet.
+* **Get-MailboxBrokenEAP** Captures users missing the Office 365 tenant proxy address.
+* **Set-MailboxBrokenEAP** Applies to users the the Office 365 tenant proxy address.
