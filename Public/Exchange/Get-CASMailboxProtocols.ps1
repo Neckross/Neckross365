@@ -16,19 +16,43 @@ Get-CASMailboxProtocols -CsvFile "C:\Scripts\GetCASMailboxProtocols.csv" | Expor
 General notes
 #>
 
-  [CmdletBinding()]
+  [CmdletBinding(DefaultParameterSetName = 'Placeholder')]
   param
   (
-    [Parameter()]
-    [switch]
-    $All,
+    [Parameter(ParameterSetName = "CsvFile")]
+    $CsvFile,
 
-    [Parameter()]
-    $CsvFile
+    [Parameter(ParameterSetName = "PrimarySmtpAddress")]
+    $PrimarySmtpAddress
   )
 
-  if ($All) {
-    $CASmbxs = Get-CASMailbox -ResultSize unlimited
+  if ($CsvFile) {
+    $csv = Import-Csv -Path $CsvFile
+    foreach ($CurCsv in $csv) {
+      $mbxs = $null
+      $CASmbxs = $null
+      $CASmbxs = Get-CASMailbox -Identity $CurCsv.PrimarySmtpAddress
+      $mbxs = Get-Mailbox -Identity $CurCsv.PrimarySmtpAddress
+      [PSCustomObject]@{
+        DisplayName             = $CASmbxs.DisplayName
+        PrimarySmtpAddress      = $CASmbxs.PrimarySmtpAddress
+        RecipientTypeDetails    = $mbxs.RecipientTypeDetails
+        AuditEnabled            = $mbxs.AuditEnabled
+        ActiveSyncEnabled       = $CASmbxs.ActiveSyncEnabled
+        OWAEnabled              = $CASmbxs.OWAEnabled
+        OWAforDevicesEnabled    = $CASmbxs.OWAforDevicesEnabled
+        EwsEnabled              = $CASmbxs.EwsEnabled
+        PopEnabled              = $CASmbxs.PopEnabled
+        ImapEnabled             = $CASmbxs.ImapEnabled
+        MAPIEnabled             = $CASmbxs.MAPIEnabled
+        UniversalOutlookEnabled = $CASmbxs.UniversalOutlookEnabled
+        OutlookMobileEnabled    = $CASmbxs.OutlookMobileEnabled
+        MacOutlookEnabled       = $CASmbxs.MacOutlookEnabled
+      }
+    }
+  }
+  elseif ($PrimarySmtpAddress) {
+    $CASmbxs = Get-CASMailbox -Identity $PrimarySmtpAddress
     foreach ($CurCASMbx in $CASmbxs) {
       $mbxs = $null
       $mbxs = Get-Mailbox -Identity $CurCASMbx.PrimarySmtpAddress
@@ -51,27 +75,25 @@ General notes
     }
   }
   else {
-    $csv = Import-Csv -Path $CsvFile
-    foreach ($CurCsv in $csv) {
+    $CASmbxs = Get-CASMailbox -ResultSize unlimited
+    foreach ($CurCASMbx in $CASmbxs) {
       $mbxs = $null
-      $CASmbxs = $null
-      $CASmbxs = Get-CASMailbox -Identity $CurCsv.PrimarySmtpAddress
-      $mbxs = Get-Mailbox -Identity $CurCsv.PrimarySmtpAddress
+      $mbxs = Get-Mailbox -Identity $CurCASMbx.PrimarySmtpAddress
       [PSCustomObject]@{
-        DisplayName             = $CASmbxs.DisplayName
-        PrimarySmtpAddress      = $CASmbxs.PrimarySmtpAddress
+        DisplayName             = $CurCASMbx.DisplayName
+        PrimarySmtpAddress      = $CurCASMbx.PrimarySmtpAddress
         RecipientTypeDetails    = $mbxs.RecipientTypeDetails
         AuditEnabled            = $mbxs.AuditEnabled
-        ActiveSyncEnabled       = $CASmbxs.ActiveSyncEnabled
-        OWAEnabled              = $CASmbxs.OWAEnabled
-        OWAforDevicesEnabled    = $CASmbxs.OWAforDevicesEnabled
-        EwsEnabled              = $CASmbxs.EwsEnabled
-        PopEnabled              = $CASmbxs.PopEnabled
-        ImapEnabled             = $CASmbxs.ImapEnabled
-        MAPIEnabled             = $CASmbxs.MAPIEnabled
-        UniversalOutlookEnabled = $CASmbxs.UniversalOutlookEnabled
-        OutlookMobileEnabled    = $CASmbxs.OutlookMobileEnabled
-        MacOutlookEnabled       = $CASmbxs.MacOutlookEnabled
+        ActiveSyncEnabled       = $CurCASMbx.ActiveSyncEnabled
+        OWAEnabled              = $CurCASMbx.OWAEnabled
+        OWAforDevicesEnabled    = $CurCASMbx.OWAforDevicesEnabled
+        EwsEnabled              = $CurCASMbx.EwsEnabled
+        PopEnabled              = $CurCASMbx.PopEnabled
+        ImapEnabled             = $CurCASMbx.ImapEnabled
+        MAPIEnabled             = $CurCASMbx.MAPIEnabled
+        UniversalOutlookEnabled = $CurCASMbx.UniversalOutlookEnabled
+        OutlookMobileEnabled    = $CurCASMbx.OutlookMobileEnabled
+        MacOutlookEnabled       = $CurCASMbx.MacOutlookEnabled
       }
     }
   }
