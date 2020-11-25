@@ -1,9 +1,10 @@
 # Neckross365
 Module was created for Intune Windows 10 Autopilot and Office 365 management (its a work-in-progress).
-Huge SHOUT OUT to [Kevin Blumenfeld](https://github.com/kevinblumenfeld)
+
+SHOUT OUT to [Kevin Blumenfeld](https://github.com/kevinblumenfeld)
 
 
-### Install
+#### Install
 ```
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 Set-ExecutionPolicy RemoteSigned
@@ -11,7 +12,7 @@ Install-Module Neckross365 -Force
 Import-Module Neckross365 -Force
 ```
 
-### Update
+#### Update
 ```
 Install-Module Neckross365 -Force
 Import-Module Neckross365 -Force
