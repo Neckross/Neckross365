@@ -36,3 +36,8 @@ Install-Module Neckross365 -Force -Scope CurrentUser
 * **Get-NewBatches** It collects a NewBatches csv file to update existing Batches excel sheet.
 * **Get-MailboxBrokenEAP** Captures users missing the Office 365 tenant proxy address.
 * **Set-MailboxBrokenEAP** Applies to users the the Office 365 tenant proxy address.
+* **Get-EAPrecipientReport** Reports Email Address Policy assigned to a recipient.
+* **Get-MsolUserGroupLicenseErrorsReport** Capture all users with group-based licensing errors.
+* **Get-CASMailboxProtocols** Reports ALL CAS Mailboxes protocols state.
+* **Enable-CASMailboxProtocols** Force enable ALL CAS mailboxes protocols to TRUE.
+* **Disable-CASMailboxProtocols** Force disable ALL CAS mailboxes protocols to FALSE.

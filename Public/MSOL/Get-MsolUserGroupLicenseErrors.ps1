@@ -1,13 +1,13 @@
-function Get-MsolUserGroupLicenseErrors {
+function Get-MsolUserGroupLicenseErrorsReport {
   <#
   .SYNOPSIS
-  Capture all users with group licensing errors
+  Capture all users with group-based licensing errors (not direct licensing)
 
   .DESCRIPTION
-  Capture all users with group licensing errors
+  Capture all users with group-based licensing errors (not direct licensing)
 
   .EXAMPLE
-  Get-MsolUserGroupLicenseErrors | Out-GridView
+  Get-MsolUserGroupLicenseErrorsReport | Out-GridView
 
   .NOTES
   General notes
