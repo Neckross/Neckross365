@@ -49,7 +49,7 @@ General notes
           DisplayName          = $CurCsv.DisplayName
           PrimarySmtpAddress   = $CurCsv.PrimarySmtpAddress
           RecipientTypeDetails = $CurCsv.RecipientTypeDetails
-          Result               = 'SUCCESS'
+          Result               = 'SET-CASMailbox'
           Log                  = 'SUCCESS'
         }
       }
@@ -92,7 +92,7 @@ General notes
           DisplayName          = $CurCASmbx.DisplayName
           PrimarySmtpAddress   = $CurCASmbx.PrimarySmtpAddress
           RecipientTypeDetails = $mbx.RecipientTypeDetails
-          Result               = 'SUCCESS'
+          Result               = 'SET-CASMailbox'
           Log                  = 'SUCCESS'
         }
       }
