@@ -44,3 +44,5 @@ Import-Module Neckross365 -Force -Scope CurrentUser
 * **Get-CASMailboxProtocols** Reports ALL CAS Mailboxes protocols state.
 * **Enable-CASMailboxProtocols** Force enable ALL CAS mailboxes protocols to TRUE.
 * **Disable-CASMailboxProtocols** Force disable ALL CAS mailboxes protocols to FALSE.
+* **Get-OnpremSipUsers** Captures Onprem AD users with an existing SIP address.
+* **Get-CloudSipUsers** Captures Cloud Msol users with an existing SIP address.
