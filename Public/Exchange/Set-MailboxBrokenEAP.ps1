@@ -31,6 +31,7 @@ function Set-MailboxBrokenEAP {
         DisplayName        = $CurCsv.DisplayName
         UserPrincipalName  = $CurCsv.UserPrincipalName
         PrimarySmtpAddress = $CurCsv.PrimarySmtpAddress
+        RecipientType      = $CurCsv.RecipientTypeDetails
         Alias              = $CurCsv.Alias
         NEWAlias           = $CurCsv.NEWAlias
         SamAccountName     = $CurCsv.SamAccountName
@@ -43,6 +44,7 @@ function Set-MailboxBrokenEAP {
         DisplayName        = $CurCsv.DisplayName
         UserPrincipalName  = $CurCsv.UserPrincipalName
         PrimarySmtpAddress = $CurCsv.PrimarySmtpAddress
+        RecipientType      = $CurCsv.RecipientTypeDetails
         Alias              = $CurCsv.Alias
         Result             = 'FAILED'
         Log                = "$($_.Exception.Message)"

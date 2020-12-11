@@ -29,6 +29,7 @@ function Get-MailboxBrokenEAP {
         UserPrincipalName         = $CurMbx.UserPrincipalName
         PrimarySmtpAddress        = $CurMbx.PrimarySmtpAddress
         EmailAddressPolicyEnabled = $CurMbx.EmailAddressPolicyEnabled
+        RecipientType             = $CurMbx.RecipientTypeDetails
         Alias                     = $CurMbx.Alias
         NEWAlias                  = ''
         OrganizationalUnit        = $CurMbx.OrganizationalUnit
