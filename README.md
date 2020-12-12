@@ -46,3 +46,4 @@ Import-Module Neckross365 -Force -Scope CurrentUser
 * **Disable-CASMailboxProtocols** Force disable ALL CAS mailboxes protocols to FALSE.
 * **Get-OnpremSipUsers** Captures Onprem AD users with an existing SIP address.
 * **Get-CloudSipUsers** Captures Cloud Msol users with an existing SIP address.
+* **Get-MailboxQuotaReport** Reports on EXO mailbox size quota limits for ALL or single mailbox.
