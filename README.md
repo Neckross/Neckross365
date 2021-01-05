@@ -47,3 +47,6 @@ Import-Module Neckross365 -Force -Scope CurrentUser
 * **Get-OnpremSipUsers** Captures Onprem AD users with an existing SIP address.
 * **Get-CloudSipUsers** Captures Cloud Msol users with an existing SIP address.
 * **Get-MailboxQuotaReport** Reports on EXO mailbox size quota limits for ALL or single mailbox.
+* **Get-MailboxReport** Captures a report of On-prem Mailboxes.
+* **Get-DistributionGroupReport** Captures a report of On-prem Distribution Groups.
+* **Get-DistributionGroupMemberReport** Captures a report of On-prem Distribution Groups Members.
