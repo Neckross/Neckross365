@@ -77,7 +77,6 @@
         'Get-MobileDevicesReport'
         'Get-MfaUserReport'
         'Set-MfaState'
-        'Get-MailboxMoveInfo'
         'Get-NewBatches'
         'Get-MailboxBrokenEAP'
         'Set-MailboxBrokenEAP'
@@ -89,6 +88,9 @@
         'Get-OnpremSipUsers'
         'Get-CloudSipUsers'
         'Get-MailboxQuotaReport'
+        'Get-MailboxReport'
+        'Get-DistributionGroupReport'
+        'Get-DistributionGroupMemberReport'
     )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
