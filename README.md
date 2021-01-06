@@ -49,4 +49,4 @@ Import-Module Neckross365 -Force -Scope CurrentUser
 * **Get-MailboxQuotaReport** Reports on EXO mailbox size quota limits for ALL or single mailbox.
 * **Get-MailboxReport** Captures a report of On-prem Mailboxes.
 * **Get-DistributionGroupReport** Captures a report of On-prem Distribution Groups.
-* **Get-DistributionGroupMemberReport** Captures a report of On-prem Distribution Groups Members.
+* **Get-DistributionGroupMemberReport** Captures a report of On-prem Distribution Groups Members and Owners.
