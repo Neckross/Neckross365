@@ -28,33 +28,53 @@ function Get-DistributionGroupMemberReport {
     $csv = Import-Csv -Path $CsvFile
     foreach ($CurCsv in $csv) {
       $groups = Get-DistributionGroup -ResultSize Unlimited -Identity $CurCsv.PrimarySmtpAddress
-      $members = Get-DistributionGroupMember -Identity $CurCsv.PrimarySmtpAddress
-      foreach ($CurMember in $members) {
-        [PSCustomObject]@{
-          GroupName   = $groups.DisplayName
-          GroupEmail  = $groups.PrimarySmtpAddress
-          GroupType   = $groups.GroupType
-          MemberName  = @($members.DisplayName) -ne '' -join '|'
-          MemberEmail = @($members.PrimarySmtpAddress) -ne '' -join '|'
-          MemrberType = @($members.RecipientTypeDetails) -ne '' -join '|'
-          GroupOwners = @($groups.ManagedBy) -ne '' -join '|'
+      $RecipientHash = Get-RecipientCNHash
+      foreach ($CurGroup in $groups) {
+        $members = Get-DistributionGroupMember -ResultSize Unlimited -Identity $CurGroup.Guid.toString()
+        $ownerList = [System.Collections.Generic.List[string]]::New()
+        if ($CurGroup.ManagedBy) {
+          @($CurGroup.ManagedBy).ForEach{ $ownerList.Add($RecipientHash[$_]) }
+        }
+        $ManagedBy = if ($ownerList) {
+          @($ownerList) -ne '' -join '|'
+        }
+        else { '' }
+        foreach ($CurMember in $members) {
+          [PSCustomObject]@{
+            GroupName   = $CurGroup.DisplayName
+            GroupEmail  = $CurGroup.PrimarySmtpAddress
+            GroupType   = $CurGroup.GroupType
+            MemberName  = $CurMember.DisplayName
+            MemberEmail = $CurMember.PrimarySmtpAddress
+            MemrberType = $CurMember.RecipientTypeDetails
+            GroupOwners = $ManagedBy
+          }
         }
       }
     }
   }
   else {
     $groups = Get-DistributionGroup -ResultSize Unlimited
+    $RecipientHash = Get-RecipientCNHash
     foreach ($CurGroup in $groups) {
-      $members = Get-DistributionGroupMember -ResultSize Unlimited -Identity $CurGroup.PrimarySmtpAddress
+      $members = Get-DistributionGroupMember -ResultSize Unlimited -Identity $CurGroup.Guid.toString()
+      $ownerList = [System.Collections.Generic.List[string]]::New()
+      if ($CurGroup.ManagedBy) {
+        @($CurGroup.ManagedBy).ForEach{ $ownerList.Add($RecipientHash[$_]) }
+      }
+      $ManagedBy = if ($ownerList) {
+        @($ownerList) -ne '' -join '|'
+      }
+      else { '' }
       foreach ($CurMember in $members) {
         [PSCustomObject]@{
           GroupName   = $CurGroup.DisplayName
           GroupEmail  = $CurGroup.PrimarySmtpAddress
           GroupType   = $CurGroup.GroupType
-          MemberName  = @($members.DisplayName) -ne '' -join '|'
-          MemberEmail = @($members.PrimarySmtpAddress) -ne '' -join '|'
-          MemrberType = @($members.RecipientTypeDetails) -ne '' -join '|'
-          GroupOwners = @($CurGroup.ManagedBy) -ne '' -join '|'
+          MemberName  = $CurMember.DisplayName
+          MemberEmail = $CurMember.PrimarySmtpAddress
+          MemrberType = $CurMember.RecipientTypeDetails
+          GroupOwners = $ManagedBy
         }
       }
     }
