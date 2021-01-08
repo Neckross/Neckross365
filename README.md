@@ -50,3 +50,4 @@ Import-Module Neckross365 -Force -Scope CurrentUser
 * **Get-MailboxReport** Captures a report of On-prem Mailboxes.
 * **Get-DistributionGroupReport** Captures a report of On-prem Distribution Groups.
 * **Get-DistributionGroupMemberReport** Captures a report of On-prem Distribution Groups Members and Owners.
+* **Get-O365SoftDeletedAccounts** Captures and output an Excel report on ALL Office 365 deleted accounts.
