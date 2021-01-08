@@ -12,7 +12,7 @@
     RootModule        = '.\Neckross365.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.0.0022'
+    ModuleVersion     = '0.0.0023'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
