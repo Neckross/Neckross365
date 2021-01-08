@@ -35,21 +35,21 @@ function Get-O365SoftDeletedAccounts {
   # Requirements Modules
   $module1 = Import-Module MSOnline -PassThru -ErrorAction Ignore
   if (-not $module1) {
-    Write-Host "Installing module MSOnline"
+    Write-Verbose "Installing module MSOnline"
     Install-Module MSOnline -Force
   }
   Import-Module MSOnline -Scope Global
 
   $module2 = Import-Module AzureAD -PassThru -ErrorAction Ignore
   if (-not $module2) {
-    Write-Host "Installing module AzureAD"
+    Write-Verbose "Installing module AzureAD"
     Install-Module AzureAD -Force
   }
   Import-Module AzureAD -Scope Global
 
   $module3 = Import-Module ExchangeOnlineManagement -PassThru -ErrorAction Ignore
   if (-not $module3) {
-    Write-Host "Installing module ExchangeOnlineManagement"
+    Write-Verbose "Installing module ExchangeOnlineManagement"
     Install-Module ExchangeOnlineManagement -Force
   }
   Import-Module ExchangeOnlineManagement -Scope Global
@@ -157,4 +157,8 @@ function Get-O365SoftDeletedAccounts {
   }
   Get-ChildItem -Path $CSV -Filter "*.csv" | Sort-Object BaseName |
   ForEach-Object { Import-Csv $_.fullname | Export-Excel @ExcelSplat -Path (Join-Path $Discovery 'Discovery.xlsx') -WorksheetName $_.basename }
+
+  # Complete
+  Write-Verbose "Script Complete"
+  Write-Host "Results can be found on the Desktop in a folder named, Discovery"
 }
