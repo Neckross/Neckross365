@@ -3,6 +3,7 @@ Module was created for Intune Windows 10 Autopilot and Office 365 management (it
 
 SHOUT OUT to [Kevin Blumenfeld](https://github.com/kevinblumenfeld)
 
+ [![](https://img.shields.io/powershellgallery/v/Neckross365.svg)](https://www.powershellgallery.com/packages/Neckross365) [![](https://img.shields.io/powershellgallery/dt/Neckross365.svg)](https://www.powershellgallery.com/packages/Neckross365)
 
 ###### Install
 ```powershell
