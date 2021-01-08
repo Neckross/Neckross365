@@ -39,17 +39,17 @@ Import-Module Neckross365 -Force -Scope CurrentUser
 * **Get-MfaUserReport** Generates MSOL users MFA report.
 * **Set-MfaState** Converts an MFA user to user Azure AD Conditional Access MFA.
 * **Get-NewBatches** It collects a NewBatches csv file to update existing Batches excel sheet.
-* **Get-MailboxBrokenEAP** Captures users missing the Office 365 tenant proxy address.
-* **Set-MailboxBrokenEAP** Applies to users the the Office 365 tenant proxy address.
-* **Get-EAPrecipientReport** Reports Email Address Policy assigned to a recipient.
-* **Get-MsolUserGroupLicenseErrorsReport** Capture all users with group-based licensing errors.
-* **Get-CASMailboxProtocols** Reports ALL CAS Mailboxes protocols state.
-* **Enable-CASMailboxProtocols** Force enable ALL CAS mailboxes protocols to TRUE.
-* **Disable-CASMailboxProtocols** Force disable ALL CAS mailboxes protocols to FALSE.
-* **Get-OnpremSipUsers** Captures Onprem AD users with an existing SIP address.
-* **Get-CloudSipUsers** Captures Cloud Msol users with an existing SIP address.
-* **Get-MailboxQuotaReport** Reports on EXO mailbox size quota limits for ALL or single mailbox.
-* **Get-MailboxReport** Captures a report of On-prem Mailboxes.
-* **Get-DistributionGroupReport** Captures a report of On-prem Distribution Groups.
-* **Get-DistributionGroupMemberReport** Captures a report of On-prem Distribution Groups Members and Owners.
+* **Get-MailboxBrokenEAP** Captures on-prem users missing the Office 365 tenant proxy address.
+* **Set-MailboxBrokenEAP** Applies on-prem users the the Office 365 tenant proxy address.
+* **Get-EAPrecipientReport** Reports on-prem users EmailAddressPolicy assigned to a recipient.
+* **Get-MsolUserGroupLicenseErrorsReport** Capture all MSOL users with group-based licensing errors.
+* **Get-CASMailboxProtocols** Reports ALL on-prem CAS Mailboxes protocols state.
+* **Enable-CASMailboxProtocols** Force enable ALL on-prem CAS mailboxes protocols to TRUE.
+* **Disable-CASMailboxProtocols** Force disable ALL onp-prem CAS mailboxes protocols to FALSE.
+* **Get-OnpremSipUsers** Captures on-prem AD users with an existing SIP address.
+* **Get-CloudSipUsers** Captures cloud MSOL users with an existing SIP address.
+* **Get-MailboxQuotaReport** Reports on cloud EXO mailbox size quota limits for ALL or single mailbox.
+* **Get-MailboxReport** Captures a report of on-prem Mailboxes.
+* **Get-DistributionGroupReport** Captures a report of on-prem Distribution Groups.
+* **Get-DistributionGroupMemberReport** Captures a report of on-prem Distribution Groups Members and Owners.
 * **Get-O365SoftDeletedAccounts** Captures and output an Excel report on ALL Office 365 deleted accounts.
