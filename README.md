@@ -1,5 +1,5 @@
 # Neckross365
-Module was created for Intune Windows 10 Autopilot and Office 365 management (its a work-in-progress).
+Module was created for Intune Windows 10 Autopilot, Office 365 and Exchange On-prem management (its a work-in-progress).
 
 SHOUT OUT to [Kevin Blumenfeld](https://github.com/kevinblumenfeld)
 
@@ -27,7 +27,7 @@ Install-Module Neckross365 -Force -Scope CurrentUser
 Import-Module Neckross365 -Force -Scope CurrentUser
 ```
 
-### Windows 10 Autopilot
+### Intune Windows 10 Autopilot
 * **Get-Windows10Hash** Collects Windows 10 hashes and export to CSV.
 * **Get-Windows10HashUploadToIntune** Collects Windows 10 hashes and uploads to Intune.
 * **Get-Windows10HashBULKUploadToAzure** Collects Windows 10 hashes and uploads to Azure Blob (needs additional Blob configuration)
@@ -38,18 +38,21 @@ Import-Module Neckross365 -Force -Scope CurrentUser
 * **Get-MobileDevicesReport** Generates mobile devices report for Exchange Online.
 * **Get-MfaUserReport** Generates MSOL users MFA report.
 * **Set-MfaState** Converts an MFA user to user Azure AD Conditional Access MFA.
+* **Get-MsolUserGroupLicenseErrorsReport** Capture all MSOL users with group-based licensing errors.
+* **Get-CloudSipUsers** Captures cloud MSOL users with an existing SIP address.
+* **Get-MailboxQuotaReport** Reports on cloud EXO mailbox size quota limits for ALL or single mailbox.
+* **Get-O365SoftDeletedAccounts** Captures and output an Excel report on ALL Office 365 deleted accounts.
+
+
+### On-Prem Management
 * **Get-NewBatches** It collects a NewBatches csv file to update existing Batches excel sheet.
 * **Get-MailboxBrokenEAP** Captures on-prem users missing the Office 365 tenant proxy address.
 * **Set-MailboxBrokenEAP** Applies on-prem users the the Office 365 tenant proxy address.
 * **Get-EAPrecipientReport** Reports on-prem users EmailAddressPolicy assigned to a recipient.
-* **Get-MsolUserGroupLicenseErrorsReport** Capture all MSOL users with group-based licensing errors.
 * **Get-CASMailboxProtocols** Reports ALL on-prem CAS Mailboxes protocols state.
 * **Enable-CASMailboxProtocols** Force enable ALL on-prem CAS mailboxes protocols to TRUE.
 * **Disable-CASMailboxProtocols** Force disable ALL onp-prem CAS mailboxes protocols to FALSE.
 * **Get-OnpremSipUsers** Captures on-prem AD users with an existing SIP address.
-* **Get-CloudSipUsers** Captures cloud MSOL users with an existing SIP address.
-* **Get-MailboxQuotaReport** Reports on cloud EXO mailbox size quota limits for ALL or single mailbox.
 * **Get-MailboxReport** Captures a report of on-prem Mailboxes.
 * **Get-DistributionGroupReport** Captures a report of on-prem Distribution Groups.
 * **Get-DistributionGroupMemberReport** Captures a report of on-prem Distribution Groups Members and Owners.
-* **Get-O365SoftDeletedAccounts** Captures and output an Excel report on ALL Office 365 deleted accounts.
