@@ -41,13 +41,13 @@ function Get-DistributionGroupMemberReport {
         else { '' }
         foreach ($CurMember in $members) {
           [PSCustomObject]@{
-            GroupName   = $CurGroup.DisplayName
-            GroupEmail  = $CurGroup.PrimarySmtpAddress
-            GroupType   = $CurGroup.GroupType
-            MemberName  = $CurMember.DisplayName
-            MemberEmail = $CurMember.PrimarySmtpAddress
-            MemrberType = $CurMember.RecipientTypeDetails
-            GroupOwners = $ManagedBy
+            DistributionGroupName   = $CurGroup.DisplayName
+            DistributionGroupEmail  = $CurGroup.PrimarySmtpAddress
+            DistributionGroupType   = $CurGroup.GroupType
+            MemberName              = $CurMember.DisplayName
+            MemberEmail             = $CurMember.PrimarySmtpAddress
+            MemrberType             = $CurMember.RecipientTypeDetails
+            DistributionGroupOwners = $ManagedBy
           }
         }
       }
@@ -68,13 +68,13 @@ function Get-DistributionGroupMemberReport {
       else { '' }
       foreach ($CurMember in $members) {
         [PSCustomObject]@{
-          GroupName   = $CurGroup.DisplayName
-          GroupEmail  = $CurGroup.PrimarySmtpAddress
-          GroupType   = $CurGroup.GroupType
-          MemberName  = $CurMember.DisplayName
-          MemberEmail = $CurMember.PrimarySmtpAddress
-          MemrberType = $CurMember.RecipientTypeDetails
-          GroupOwners = $ManagedBy
+          DistributionGroupName   = $CurGroup.DisplayName
+          DistributionGroupEmail  = $CurGroup.PrimarySmtpAddress
+          DistributionGroupType   = $CurGroup.GroupType
+          MemberName              = $CurMember.DisplayName
+          MemberEmail             = $CurMember.PrimarySmtpAddress
+          MemrberType             = $CurMember.RecipientTypeDetails
+          DistributionGroupOwners = $ManagedBy
         }
       }
     }
