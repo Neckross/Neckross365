@@ -50,6 +50,7 @@ function Get-MailboxReport {
             EmailAddressPolicyEnabled  = $CurMbx.EmailAddressPolicyEnabled
             HiddenFromGAL              = $CurMbx.HiddenFromAddressListsEnabled
             OrganizationalUnit         = $CurMbx.OrganizationalUnit
+            Department                 = $CurMbx.Department
             RetentionPolicy            = $CurMbx.RetentionPolicy
             Database                   = $CurMbx.Database
             ServerName                 = $CurMbx.ServerName
@@ -87,6 +88,7 @@ function Get-MailboxReport {
           EmailAddressPolicyEnabled  = $CurMbx.EmailAddressPolicyEnabled
           HiddenFromGAL              = $CurMbx.HiddenFromAddressListsEnabled
           OrganizationalUnit         = $CurMbx.OrganizationalUnit
+          Department                 = $CurMbx.Department
           RetentionPolicy            = $CurMbx.RetentionPolicy
           Database                   = $CurMbx.Database
           ServerName                 = $CurMbx.ServerName

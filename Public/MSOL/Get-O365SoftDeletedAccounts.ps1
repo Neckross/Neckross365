@@ -150,15 +150,16 @@ function Get-O365SoftDeletedAccounts {
   $ExcelSplat = @{
     TableStyle              = 'Medium2'
     FreezeTopRowFirstColumn = $true
+    FreezeFirstColumn       = $true
     AutoSize                = $true
     BoldTopRow              = $false
     ClearSheet              = $true
     ErrorAction             = 'SilentlyContinue'
   }
   Get-ChildItem -Path $CSV -Filter "*.csv" | Sort-Object BaseName |
-  ForEach-Object { Import-Csv $_.fullname | Export-Excel @ExcelSplat -Path (Join-Path $Discovery 'Discovery.xlsx') -WorksheetName $_.basename }
+  ForEach-Object { Import-Csv $_.fullname | Export-Excel @ExcelSplat -Path (Join-Path $Discovery 'O365_SoftDeletedAccounts.xlsx') -WorksheetName $_.basename }
 
   # Complete
   Write-Verbose "Script Complete"
-  Write-Host "Results can be found on the Desktop in a folder named, Discovery"
+  Write-Host -ForegroundColor Green "Results can be found on the Desktop in a folder named, Discovery"
 }
