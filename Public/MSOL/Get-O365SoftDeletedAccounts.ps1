@@ -161,5 +161,5 @@ function Get-O365SoftDeletedAccounts {
 
   # Complete
   Write-Verbose "Script Complete"
-  Write-Host -ForegroundColor Green "Results can be found on the Desktop in a folder named, Discovery"
+  Write-Verbose "Results can be found on the Desktop in a folder named, Discovery"
 }
