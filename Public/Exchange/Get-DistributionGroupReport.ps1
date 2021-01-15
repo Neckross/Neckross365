@@ -28,20 +28,24 @@ function Get-DistributionGroupReport {
     $csv = Import-Csv -Path $CsvFile
     foreach ($CurCsv in $csv) {
       $groups = Get-DistributionGroup -ResultSize Unlimited -Identity $CurCsv.PrimarySmtpAddress
-      [PSCustomObject]@{
-        Name                      = $groups.Name
-        DisplayName               = $groups.DisplayName
-        PrimarySmtpAddress        = $groups.PrimarySmtpAddress
-        GroupType                 = $groups.GroupType
-        Alias                     = $groups.Alias
-        SamAccountName            = $groups.SamAccountName
-        EmailAddressPolicyEnabled = $groups.EmailAddressPolicyEnabled
-        HiddenFromGAL             = $groups.HiddenFromAddressListsEnabled
-        RequireSenderAuth         = $groups.RequireSenderAuthenticationEnabled
-        ModerationEnabled         = $groups.ModerationEnabled
-        Guid                      = $groups.Guid
-        O365TenantProxy           = @($groups.EmailAddresses) -like "*mail.onmicrosoft.com" -join "|"
-        EmailAddresses            = @($groups.EmailAddresses) -ne '' -join '|'
+      foreach ($CurGroup in $groups) {
+        [PSCustomObject]@{
+          Name                      = $CurGroup.Name
+          DisplayName               = $CurGroup.DisplayName
+          PrimarySmtpAddress        = $CurGroup.PrimarySmtpAddress
+          GroupType                 = $CurGroup.GroupType
+          Alias                     = $CurGroup.Alias
+          SamAccountName            = $CurGroup.SamAccountName
+          EmailAddressPolicyEnabled = $CurGroup.EmailAddressPolicyEnabled
+          HiddenFromGAL             = $CurGroup.HiddenFromAddressListsEnabled
+          OrganizationalUnit        = $CurGroup.OrganizationalUnit
+          RequireSenderAuth         = $CurGroup.RequireSenderAuthenticationEnabled
+          ModerationEnabled         = $CurGroup.ModerationEnabled
+          Guid                      = $CurGroup.Guid
+          LegacyExchangeDN          = $CurGroup.LegacyExchangeDN
+          O365TenantProxy           = @($CurGroup.EmailAddresses) -like "*mail.onmicrosoft.com" -join "|"
+          EmailAddresses            = @($CurGroup.EmailAddresses) -ne '' -join '|'
+        }
       }
     }
   }
@@ -57,9 +61,11 @@ function Get-DistributionGroupReport {
         SamAccountName            = $CurGroup.SamAccountName
         EmailAddressPolicyEnabled = $CurGroup.EmailAddressPolicyEnabled
         HiddenFromGAL             = $CurGroup.HiddenFromAddressListsEnabled
+        OrganizationalUnit        = $CurGroup.OrganizationalUnit
         RequireSenderAuth         = $CurGroup.RequireSenderAuthenticationEnabled
         ModerationEnabled         = $CurGroup.ModerationEnabled
         Guid                      = $CurGroup.Guid
+        LegacyExchangeDN          = $CurGroup.LegacyExchangeDN
         O365TenantProxy           = @($CurGroup.EmailAddresses) -like "*mail.onmicrosoft.com" -join "|"
         EmailAddresses            = @($CurGroup.EmailAddresses) -ne '' -join '|'
       }
