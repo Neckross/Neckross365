@@ -112,9 +112,12 @@ function Get-O365SoftDeletedAccounts {
   )
 
   # Location
-  $Discovery = Join-Path ([Environment]::GetFolderPath("Desktop")) -ChildPath 'Discovery'
+  $NeckrossPath = Join-Path ([Environment]::GetFolderPath("Desktop")) -ChildPath 'Neckross365'
+  $Discovery = Join-Path $NeckrossPath -ChildPath 'Discovery'
+  $Detailed = Join-Path $Discovery -ChildPath 'Detailed'
   $Csv = Join-Path $Discovery -ChildPath 'CSV'
   $null = New-Item -ItemType Directory -Path $Discovery -ErrorAction SilentlyContinue
+  $null = New-Item -ItemType Directory -Path $Detailed  -ErrorAction SilentlyContinue
   $null = New-Item -ItemType Directory -Path $Csv -ErrorAction SilentlyContinue
 
   $CsvSplat = @{
