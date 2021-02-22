@@ -55,7 +55,7 @@ function Get-O365SoftDeletedAccounts {
   Import-Module ExchangeOnlineManagement -Scope Global
 
   # Define export objects
-  $SoftDeletedUsers = @(
+  $SoftDeletedMsolUsers = @(
     'DisplayName'
     'UserPrincipalName'
     'SoftDeletionTimestamp'
@@ -127,9 +127,9 @@ function Get-O365SoftDeletedAccounts {
 
   # Script
   if ($SearchString) {
-    #SoftDeletedUsers
+    #SoftDeletedMsolUsers
     $users = Get-MsolUser -ReturnDeletedUsers -SearchString $SearchString
-    $users | Select-Object $SoftDeletedUsers | Out-GridView -Title "SoftDeletedUsers keyword '$($SearchString)'"
+    $users | Select-Object $SoftDeletedMsolUsers | Out-GridView -Title "SoftDeletedMsolUsers keyword '$($SearchString)'"
     #SoftDeletedMailboxes
     $mbxs = Get-Mailbox -SoftDeletedMailbox -Anr $SearchString
     $mbxs | Select-Object $SoftDeletedMailboxes | Out-GridView -Title "SoftDeletedMailboxes keyword '$($SearchString)'"
@@ -138,9 +138,9 @@ function Get-O365SoftDeletedAccounts {
     $mailusers | Select-Object $SoftDeletedMailUsers | Out-GridView -Title "SoftDeletedMailUsers keyword '$($SearchString)'"
   }
   else {
-    #SoftDeletedUsers
+    #SoftDeletedMsolUsers
     $users = Get-MsolUser -ReturnDeletedUsers -All
-    $users | Select-Object $SoftDeletedUsers | Sort-Object DisplayName | Export-Csv @CsvSplat -Path (Join-Path -Path $Csv -ChildPath 'SoftDeletedUsers.csv')
+    $users | Select-Object $SoftDeletedMsolUsers | Sort-Object DisplayName | Export-Csv @CsvSplat -Path (Join-Path -Path $Csv -ChildPath 'SoftDeletedMsolUsers.csv')
     #SoftDeletedMailboxes
     $mbxs = Get-Mailbox -SoftDeletedMailbox -ResultSize Unlimited
     $mbxs | Select-Object $SoftDeletedMailboxes | Sort-Object DisplayName | Export-Csv @CsvSplat -Path (Join-Path -Path $Csv -ChildPath 'SoftDeletedMailboxes.csv')
@@ -164,5 +164,5 @@ function Get-O365SoftDeletedAccounts {
 
   # Complete
   Write-Verbose "Script Complete"
-  Write-Verbose "Results can be found on the Desktop in a folder named, Discovery"
+  Write-Verbose "Results can be found on the Desktop in a folder named, Neckross365"
 }

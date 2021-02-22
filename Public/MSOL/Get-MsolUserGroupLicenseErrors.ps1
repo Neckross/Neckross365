@@ -16,7 +16,7 @@ function Get-MsolUserGroupLicenseErrorsReport {
   foreach ($CurUser in $users) {
     $ReferencedObjectId = $null
     $ReferencedObjectId = $CurUser.IndirectLicenseErrors.ReferencedObjectId
-    $groups = Get-MsolGroup -ObjectId $ReferencedObjectId
+    $groups = Get-MsolGroup -ObjectId $ReferencedObjectId -ErrorAction SilentlyContinue -WarningAction SilentlyContinue
     [PSCustomObject]@{
       UserName     = $CurUser.DisplayName
       UserUPN      = $CurUser.UserPrincipalName
