@@ -2,19 +2,21 @@ function Get-O365SoftDeletedAccounts {
   <#
   .SYNOPSIS
   Captures and output an Excel report on ALL Office 365 deleted accounts
+  You must be connected to MSOL, AzureAD and EXOv2
 
   .DESCRIPTION
   Captures and output an Excel report on ALL Office 365 deleted accounts:
   MsolDeletedUsers
   SoftDeletedMailboxes
   SoftDeletedMailUsers
+  MsolDeletedGroups
 
   .PARAMETER SearchString
   Parameter description
 
   .EXAMPLE
   Get-O365SoftDeletedAccounts
-  This will export to an Excel sheet "Discovery.xlsx" in your Desktop
+  This will export to an Excel sheet "O365_SoftDeletedAccounts.xlsx" in your Desktop
   It will include ALL SoftDeletedAccounts found in Office 365
 
   .EXAMPLE
@@ -113,14 +115,20 @@ function Get-O365SoftDeletedAccounts {
   $SoftDeletedMsolGroups = @(
     'DisplayName'
     'MailNickname'
-    'GroupTypes'
+    @{
+      name       = 'GroupTypes'
+      expression = { @($_.GroupTypes) -ne '' -join '|' }
+    }
     'Mail'
     'MailEnabled'
     'SecurityEnabled'
     'Visibility'
-    'ProxyAddresses'
     'CreatedDateTime'
     'Id'
+    @{
+      name       = 'ProxyAddresses'
+      expression = { @($_.ProxyAddresses) -ne '' -join '|' }
+    }
   )
 
   # Location
