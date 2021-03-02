@@ -110,6 +110,18 @@ function Get-O365SoftDeletedAccounts {
     'ExchangeObjectId'
     'Guid'
   )
+  $SoftDeletedMsolGroups = @(
+    'DisplayName'
+    'MailNickname'
+    'GroupTypes'
+    'Mail'
+    'MailEnabled'
+    'SecurityEnabled'
+    'Visibility'
+    'ProxyAddresses'
+    'CreatedDateTime'
+    'Id'
+  )
 
   # Location
   $NeckrossPath = Join-Path ([Environment]::GetFolderPath("Desktop")) -ChildPath 'Neckross365'
@@ -136,6 +148,9 @@ function Get-O365SoftDeletedAccounts {
     #SoftDeletedMailUsers
     $mailusers = Get-MailUser -SoftDeletedMailUser -Anr $SearchString
     $mailusers | Select-Object $SoftDeletedMailUsers | Out-GridView -Title "SoftDeletedMailUsers keyword '$($SearchString)'"
+    #SoftDeletedMsolGroups
+    $groups = Get-AzureADMSDeletedGroup -SearchString $SearchString
+    $groups | Select-Object $SoftDeletedMsolGroups | Out-GridView -Title "SoftDeletedMsolGroups keyword '$($SearchString)'"
   }
   else {
     #SoftDeletedMsolUsers
@@ -147,6 +162,9 @@ function Get-O365SoftDeletedAccounts {
     #SoftDeletedMailUsers
     $mailusers = Get-MailUser -SoftDeletedMailUser -ResultSize Unlimited
     $mailusers | Select-Object $SoftDeletedMailUsers | Sort-Object DisplayName | Export-Csv @CsvSplat -Path (Join-Path -Path $Csv -ChildPath 'SoftDeletedMailUsers.csv')
+    #SoftDeletedMsolGroups
+    $groups = Get-AzureADMSDeletedGroup -All $true
+    $groups | Select-Object $SoftDeletedMsolGroups | Sort-Object DisplayName | Export-Csv @CsvSplat -Path (Join-Path -Path $Csv -ChildPath 'SoftDeletedMsolGroups.csv')
   }
 
   # Create Excel Workbook
