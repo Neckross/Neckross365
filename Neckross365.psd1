@@ -12,7 +12,7 @@
     RootModule        = '.\Neckross365.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.0.0030'
+    ModuleVersion     = '0.0.0031'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -30,7 +30,7 @@
     Copyright         = '(c) 2020 Juan Sifuentes. All rights reserved.'
 
     # Description of the functionality provided by this module
-    Description       = 'Set of Office 365 tools for Intune Windows Autopilot and Office365'
+    Description       = 'Microsoft 365 tools (Office 365, Intune, Autopilot and Windows 365)'
 
     # Minimum version of the Windows PowerShell engine required by this module
     # PowerShellVersion = ''
@@ -92,6 +92,7 @@
         'Get-DistributionGroupReport'
         'Get-DistributionGroupMemberReport'
         'Get-O365SoftDeletedAccounts'
+        'Get-Windows365UserLogonActivity'
     )
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
@@ -118,7 +119,7 @@
         PSData = @{
 
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags       = @('Office365')
+            Tags       = @('Office365', 'Exchange', 'Intune', 'Windows365')
 
             # A URL to the license for this module.
             # LicenseUri = ''

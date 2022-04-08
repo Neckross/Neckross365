@@ -2,7 +2,7 @@
  [![](https://img.shields.io/powershellgallery/v/Neckross365.svg)](https://www.powershellgallery.com/packages/Neckross365) [![](https://img.shields.io/powershellgallery/dt/Neckross365.svg)](https://www.powershellgallery.com/packages/Neckross365)
 
 
-Module was created for Intune Windows 10 Autopilot, Office 365 and Exchange On-prem management (its a work-in-progress)..
+Module was created for Microsoft 365 tools (Office 365, Intune, Autopilot and Windows 365) and Exchange On-prem management (its a work-in-progress)..
 
 SHOUT OUT to [Kevin Blumenfeld](https://github.com/kevinblumenfeld)
 
@@ -58,3 +58,7 @@ Import-Module Neckross365 -Force
 * **Get-MailboxReport** Captures a report of on-prem Mailboxes.
 * **Get-DistributionGroupReport** Captures a report of on-prem Distribution Groups.
 * **Get-DistributionGroupMemberReport** Captures a report of on-prem Distribution Groups Members and Owners.
+
+
+### Windows 365 Cloud PC
+* **Get-Windows365UserLogonActivity** It captures the logon activity of a Windows 365 user from a Cloud PC.
