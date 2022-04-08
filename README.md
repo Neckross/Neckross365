@@ -61,4 +61,4 @@ Import-Module Neckross365 -Force
 
 
 ### Windows 365 Cloud PC
-* **Get-Windows365UserLogonActivity** It captures the logon activity of a Windows 365 user from a Cloud PC.
+* **Get-Windows365UserLogonReport** It captures the user logon activity from a Windows 365 Cloud PC.

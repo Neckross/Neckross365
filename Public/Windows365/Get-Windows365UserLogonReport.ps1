@@ -1,4 +1,4 @@
-﻿function Get-Windows365UserLogonActivity {
+﻿function Get-Windows365UserLogonReport {
 
   <#
   .SYNOPSIS
@@ -9,7 +9,7 @@
   Capture Windows 365 user logon activity for their Cloud PCs
 
   .EXAMPLE
-  Get-Windows365UserLogonActivity -LogonDays 30 -CsvFile C:\Report.csv
+  Get-Windows365UserLogonReport -LogonDays 30 -CsvFile C:\Report.csv
 
   .NOTES
   General notes
@@ -56,12 +56,13 @@
   $users = @()
   foreach ($CloudPC in $CloudPCs) {
     $users += $CloudPC.UserPrincipalName
+    $UPN = $users
   }
 
   # Script: Build the output to CSV
   foreach ($user in $users) {
     $output = [PSCustomObject]@{
-      "CPCUserPrincipalName" = ""
+      "CPCUserPrincipalName" = "$UPN"
       "CPCManagedDeviceName" = ""
       "LastLogon"            = ""
       "TotalLogons"          = ""
