@@ -8,7 +8,7 @@
   Capture Windows 365 user logon activity for their Cloud PCs
 
   .EXAMPLE
-  Get-Windows365UserLogonActivity -LogonDays 30 | Out-GridView
+  Get-Windows365UserLogonActivity -LogonDays 30 -OutputCSVPath C:\Report.csv
 
   .NOTES
   General notes
@@ -16,36 +16,40 @@
 
   param (
     [Parameter(Mandatory)]
+    $OutputCSVPath,
+
+    [Parameter(Mandatory)]
     $LogonDays
   )
 
   # Requirements (Modules)
-  $module1 = Import-Module Microsoft.Graph -PassThru -ErrorAction Ignore
+  $module1 = Find-Module -Name Microsoft.Graph -ErrorAction Ignore
   if (-not $module1) {
     Write-Host "Installing module Microsoft.Graph"
-    Install-Module Microsoft.Graph -AllowClobber -Force
+    Install-Module Microsoft.Graph -Force
   }
-  Import-Module Microsoft.Graph -Scope Global
+  #Import-Module Microsoft.Graph
 
-  $module2 = Import-Module AzureADPreview -PassThru -ErrorAction Ignore
+  $module2 = Find-Module -Name AzureADPreview -ErrorAction Ignore
   if (-not $module2) {
     Write-Host "Installing module AzureADPreview"
     Install-Module AzureADPreview -AllowClobber -Force
   }
-  Import-Module AzureADPreview -Scope Global
+  #Import-Module AzureADPreview
 
   # Connect to Microsoft.Graph/AzureADPreview
   AzureADPreview\Connect-AzureAD
-  $AADtenant = Get-AzureADTenantDetail
-  Write-Host -ForegroundColor Yellow "Connected to AzureADPreview tenant $($AADtenant.ObjectId)"
-  $graph = Connect-MgGraph -Scopes "CloudPC.Read.All"
+  $AAD = Get-AzureADTenantDetail
+  Write-Host -ForegroundColor Yellow "Connected to AzureADPreview tenant $($AAD.ObjectId)"
+  Connect-MgGraph -Scopes "CloudPC.Read.All"
   Select-MgProfile -Name "beta"
-  Write-Host -ForegroundColor Yellow "Connected to Microsoft.Graph tenant $($graph.TenantId)"
+  $Graph = Get-MGContext
+  Write-Host -ForegroundColor Yellow "Connected to Microsoft.Graph tenant $($Graph.TenantId)"
 
   # Script: Capture AzureAD Logins from CloudPCs
-  $adjdate = (get-date).AddDays( - $($offset))
+  $adjdate = (get-date).AddDays( - $($LogonDays))
   $string = "$($adjdate.Year)" + "-" + "$($adjdate.Month)" + "-" + "$($adjdate.Day)"
-  $cloudPCs = Get-MgDeviceManagementVirtualEndpointCloudPC
+  $CloudPCs = Get-MgDeviceManagementVirtualEndpointCloudPC
   $WebLogons = Get-AzureADAuditSignInLogs -Filter "appdisplayname eq 'Windows 365 Portal' and createdDateTime gt $string"
   $ClientLogons = Get-AzureADAuditSignInLogs -Filter "appdisplayname eq 'Azure Virtual Desktop Client' and createdDateTime gt $string"
 
@@ -64,7 +68,7 @@
       "TotalLogons"          = ""
       "WebLogons"            = ""
       "ClientLogons"         = ""
-      "TotalDays"            = "$offset"
+      "TotalDays"            = "$LogonDays"
     }
 
     $countweb = $null
@@ -111,5 +115,8 @@
 
     #outputs notification if no logon activity has been recorded
     if ($total -eq 0) { write-host "User has not logged in." -ForegroundColor Red }
+
+    #sends data to CSV file
+    $output | Export-Csv -Path $OutputCSVPath -NoTypeInformation -Append
   }
 }
