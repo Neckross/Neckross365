@@ -3,12 +3,13 @@
   <#
   .SYNOPSIS
   Capture Windows 365 user logon activity for their Cloud PCs
+  Reference: https://github.com/microsoft/Windows365-PSScripts
 
   .DESCRIPTION
   Capture Windows 365 user logon activity for their Cloud PCs
 
   .EXAMPLE
-  Get-Windows365UserLogonActivity -LogonDays 30 -OutputCSVPath C:\Report.csv
+  Get-Windows365UserLogonActivity -LogonDays 30 -CsvFile C:\Report.csv
 
   .NOTES
   General notes
@@ -16,7 +17,7 @@
 
   param (
     [Parameter(Mandatory)]
-    $OutputCSVPath,
+    $CsvFile,
 
     [Parameter(Mandatory)]
     $LogonDays
@@ -28,14 +29,12 @@
     Write-Host "Installing module Microsoft.Graph"
     Install-Module Microsoft.Graph -Force
   }
-  #Import-Module Microsoft.Graph
 
   $module2 = Find-Module -Name AzureADPreview -ErrorAction Ignore
   if (-not $module2) {
     Write-Host "Installing module AzureADPreview"
     Install-Module AzureADPreview -AllowClobber -Force
   }
-  #Import-Module AzureADPreview
 
   # Connect to Microsoft.Graph/AzureADPreview
   AzureADPreview\Connect-AzureAD
@@ -47,7 +46,7 @@
   Write-Host -ForegroundColor Yellow "Connected to Microsoft.Graph tenant $($Graph.TenantId)"
 
   # Script: Capture AzureAD Logins from CloudPCs
-  $adjdate = (get-date).AddDays( - $($LogonDays))
+  $adjdate = (Get-Date).AddDays( - $($LogonDays))
   $string = "$($adjdate.Year)" + "-" + "$($adjdate.Month)" + "-" + "$($adjdate.Day)"
   $CloudPCs = Get-MgDeviceManagementVirtualEndpointCloudPC
   $WebLogons = Get-AzureADAuditSignInLogs -Filter "appdisplayname eq 'Windows 365 Portal' and createdDateTime gt $string"
@@ -114,9 +113,10 @@
     $output.LastLogon = $LastLogon
 
     #outputs notification if no logon activity has been recorded
-    if ($total -eq 0) { write-host "User has not logged in." -ForegroundColor Red }
+    if ($total -eq 0) { Write-Host "User has not logged in." -ForegroundColor Red }
 
     #sends data to CSV file
-    $output | Export-Csv -Path $OutputCSVPath -NoTypeInformation -Append
+    $output | Export-Csv -Path $CsvFile -NoTypeInformation -Append
+    Write-Host -ForegroundColor Yellow "File was exported to $CsvFile"
   }
 }
