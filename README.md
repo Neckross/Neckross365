@@ -12,7 +12,6 @@ SHOUT OUT to [Kevin Blumenfeld](https://github.com/kevinblumenfeld)
 Set-ExecutionPolicy RemoteSigned
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 Install-Module Neckross365 -Force
-Import-Module Neckross365 -Force
 ```
 
 ###### Update
@@ -26,7 +25,6 @@ Import-Module Neckross365 -Force
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 [Net.ServicePointManager]::SecurityProtocol = [Net.ServicePointManager]::SecurityProtocol -bor [Net.SecurityProtocolType]::Tls12
 Install-Module Neckross365 -Force -Scope CurrentUser
-Import-Module Neckross365 -Force
 ```
 
 ### Intune Windows 10 Autopilot
