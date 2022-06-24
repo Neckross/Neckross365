@@ -24,16 +24,22 @@
   )
 
   # Requirements (Modules)
-  $module1 = Find-Module -Name Microsoft.Graph -ErrorAction Ignore
+  $module1 = Get-InstalledModule -Name Microsoft.Graph -ErrorAction SilentlyContinue
   if (-not $module1) {
     Write-Host "Installing module Microsoft.Graph"
     Install-Module Microsoft.Graph -Force
   }
 
-  $module2 = Find-Module -Name AzureADPreview -ErrorAction Ignore
+  $module2 = Get-InstalledModule -Name AzureADPreview -ErrorAction SilentlyContinue
   if (-not $module2) {
     Write-Host "Installing module AzureADPreview"
     Install-Module AzureADPreview -AllowClobber -Force
+  }
+
+  $unistallModule1 = Get-InstalledModule -Name AzureAD -ErrorAction SilentlyContinue
+  if ($unistallModule1) {
+    Write-Host -ForegroundColor Red "Found AzureAD module, must uninstall. Cannot cohexist with AzureADPreview."
+    Write-Host -ForegroundColor Yellow "Run 'Remove-Module -Name AzureAD -Force' as an administrator"
   }
 
   # Connect to Microsoft.Graph/AzureADPreview
@@ -84,7 +90,7 @@
 
     #Counts each web logon
     foreach ($WebLogon in $WebLogons) {
-      if ($WebLogon.UserPrincipalName -eq $user) {
+      if (($WebLogon.UserPrincipalName -eq $user) -and ($WebLogon.DeviceDetail.Displayname -like "CPC-*")) {
         $countweb = $countweb + 1
         if ($Weblogon.CreatedDateTime -gt $LastLogon) { $LastLogon = $WebLogon.CreatedDateTime }
       }
